@@ -8,8 +8,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +23,174 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes page-warmth {
+  from {
+    background-color: #fff8fb;
+  }
+
+  to {
+    background-color: #fff1f5;
+  }
+}
+
+@keyframes title-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes tile-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heart-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: translateY(-5px) rotate(5deg) scale(1.06);
+  }
+}
+
+@keyframes gallery-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes message-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes card-arrive {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes memory-glow {
+  0%,
+  100% {
+    filter: saturate(1);
+    box-shadow: 0 22px 50px rgba(113, 59, 50, 0.2);
+  }
+
+  50% {
+    filter: saturate(1.08) brightness(1.03);
+    box-shadow: 0 28px 62px rgba(113, 59, 50, 0.26);
+  }
+}
+
+@keyframes photo-drift {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.025);
+  }
+}
+
+.page-shell {
+  animation: page-warmth 900ms ease-out both;
+}
+
+.hero-title {
+  animation: title-arrive 850ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.heart-hands {
+  animation: heart-bob 2.8s ease-in-out infinite;
+  display: inline-block !important;
+  transform-origin: center;
+}
+
+.countdown-unit {
+  animation: tile-arrive 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(170ms + var(--stagger));
+}
+
+.countdown-tile {
+  overflow: hidden;
+  position: relative;
+}
+
+.countdown-tile::after {
+  animation: none !important;
+  content: none;
+}
+
+.message-line {
+  animation: message-arrive 750ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: 760ms;
+}
+
+.photo-section {
+  animation: gallery-arrive 850ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: 650ms;
+}
+
+.memory-card {
+  animation:
+    card-arrive 700ms ease-out both,
+    memory-glow 6.5s ease-in-out infinite;
+  animation-delay: calc(780ms + var(--stagger)), calc(1500ms + var(--stagger));
+}
+
+.memory-photo {
+  animation: photo-drift 8s ease-in-out infinite;
+  animation-delay: calc(1300ms + var(--stagger));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-shell,
+  .hero-title,
+  .heart-hands,
+  .countdown-unit,
+  .message-line,
+  .photo-section,
+  .memory-card {
+    animation: none;
+  }
+
+  .memory-photo {
+    animation: none;
+  }
 }
