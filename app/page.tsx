@@ -120,6 +120,14 @@ const photos = [
   },
 ];
 
+const floatingEmojis = [
+  { icon: "❤️", className: "left-8 top-8 rotate-[-14deg]" },
+  { icon: "😍", className: "right-10 top-10 rotate-[12deg]" },
+  { icon: "🦆", className: "left-14 bottom-10 rotate-[10deg]" },
+  { icon: "❤️", className: "right-20 bottom-12 rotate-[-8deg]" },
+  { icon: "😍", className: "left-1/2 top-4 -translate-x-1/2 rotate-[7deg]" },
+];
+
 export default function Home() {
   const [now, setNow] = useState<number | null>(null);
 
@@ -182,7 +190,7 @@ export default function Home() {
           ))}
         </div>
 
-        <p className="message-line text-xl font-medium text-[#7a3833] sm:text-2xl">
+        <p className="message-line text-xl font-bold text-[#7a3833] sm:text-2xl">
           I can&apos;t wait to see you 🦩
         </p>
 
@@ -207,6 +215,38 @@ export default function Home() {
             ))}
           </div>
         </div>
+
+        <section className="love-note relative mt-2 w-full max-w-4xl overflow-hidden rounded-lg border border-[#f0c9bd] bg-white/78 px-6 py-8 text-left shadow-[0_22px_60px_rgba(113,59,50,0.14)] backdrop-blur sm:mt-4 sm:px-10 sm:py-10">
+          {floatingEmojis.map((emoji, index) => (
+            <span
+              key={`${emoji.icon}-${index}`}
+              className={`floating-emoji pointer-events-none absolute hidden text-3xl sm:block ${emoji.className}`}
+              style={{ "--stagger": `${index * 180}ms` } as CSSProperties}
+              aria-hidden="true"
+            >
+              {emoji.icon}
+            </span>
+          ))}
+
+          <div className="relative z-10">
+            <p className="mb-6 text-2xl font-bold text-[#34201d]">Mrs. Patootie,</p>
+
+            <p className="text-lg font-medium leading-relaxed text-[#4b302c] sm:text-xl">
+              I miss you so much. I wish we could be together right now so we can
+              have infinite cuddles and snuggles. You&apos;re the best girl in the
+              world and you make me so happy every single day. I am counting the
+              days to see you again and give you a trillion besos y abrazos. You
+              really are the most beautiful girl on earth and the nicest person I
+              have ever met. Pls marry me.
+            </p>
+
+            <p className="mt-8 text-right text-xl font-bold leading-snug text-[#34201d]">
+              With infinite love,
+              <br />
+              Mr. Patootie
+            </p>
+          </div>
+        </section>
       </section>
     </main>
   );
