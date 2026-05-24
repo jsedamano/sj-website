@@ -158,8 +158,12 @@ export default function Home() {
     : "Loading countdown";
 
   return (
-    <main className="page-shell flex min-h-screen items-start justify-center bg-[#fff1f5] px-4 pb-12 pt-16 text-[#34201d] sm:px-6 sm:pt-20 md:pt-24">
+    <main className="page-shell flex min-h-screen items-start justify-center bg-[#fff1f5] px-4 pb-12 pt-12 text-[#34201d] sm:px-6 sm:pt-14 md:pt-16">
       <section className="mx-auto flex w-full max-w-5xl flex-col items-center gap-8 text-center sm:gap-10">
+        <p className="site-title text-5xl font-black leading-none text-[#6f2f2a] sm:text-6xl md:text-7xl">
+          Patooties.com
+        </p>
+
         <h1 className="hero-title max-w-4xl text-3xl font-semibold leading-tight sm:text-4xl md:text-5xl">
           Time to see each other again{" "}
           <span className="heart-hands" aria-hidden="true">

@@ -47,6 +47,41 @@ body {
   }
 }
 
+@keyframes site-title-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(-18px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes site-title-wiggle {
+  0%,
+  100% {
+    rotate: 0deg;
+  }
+
+  20% {
+    rotate: -1.2deg;
+  }
+
+  40% {
+    rotate: 1.1deg;
+  }
+
+  60% {
+    rotate: -0.7deg;
+  }
+
+  80% {
+    rotate: 0.5deg;
+  }
+}
+
 @keyframes tile-arrive {
   from {
     opacity: 0;
@@ -155,8 +190,19 @@ body {
   animation: page-warmth 900ms ease-out both;
 }
 
+.site-title {
+  animation:
+    site-title-arrive 850ms cubic-bezier(0.2, 0.8, 0.2, 1) both,
+    site-title-wiggle 3.4s ease-in-out infinite;
+  animation-delay: 0ms, 1100ms;
+  letter-spacing: 0;
+  text-shadow: 0 12px 34px rgba(113, 59, 50, 0.16);
+  transform-origin: center;
+}
+
 .hero-title {
   animation: title-arrive 850ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: 180ms;
 }
 
 .heart-hands {
@@ -215,6 +261,7 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .page-shell,
+  .site-title,
   .hero-title,
   .heart-hands,
   .countdown-unit,
